@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Journal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    select {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #4facfe;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #00f2fe;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #444;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌈 Mood Journal</h1>
+    <select id="mood">
+      <option value="😊 Happy">😊 Happy</option>
+      <option value="😢 Sad">😢 Sad</option>
+      <option value="😠 Angry">😠 Angry</option>
+      <option value="😴 Tired">😴 Tired</option>
+      <option value="😐 Normal">😐 Normal</option>
+    </select>
+    <button onclick="saveMood()">Save Mood</button>
+
+    <h2>📝 Mood History</h2>
+    <ul id="history"></ul>
+  </div>
+
+  <script>
+    const historyList = document.getElementById('history');
+
+    function saveMood() {
+      const mood = document.getElementById('mood').value;
+      const date = new Date().toLocaleDateString();
+      const entry = `${date}: ${mood}`;
+      historyList.innerHTML += `<li>${entry}</li>`;
+    }
+  </script>
+</body>
+</html>
